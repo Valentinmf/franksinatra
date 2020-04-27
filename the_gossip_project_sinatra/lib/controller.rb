@@ -1,3 +1,7 @@
+require 'gossip'
+require 'pry'
+require 'csv'
+
 class ApplicationController < Sinatra::Base
 
   require 'gossip'
