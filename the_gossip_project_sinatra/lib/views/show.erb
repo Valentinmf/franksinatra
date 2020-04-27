@@ -1,14 +1,13 @@
 <html>
-<body>
-<h2>PAGE POTIN !</h2>
-    <% gossips.each do |gossip| %>
-        <p> Voici le potin n° <%= id%><br/>
-        Son auteur : <%= gossip.author %><br/>
-        Le contenu du potin : <%= gossip.content %>
+  <head>
+    <title>Page Potin</title>
+  </head>
+  <body>
+    <h1>Voici la page de citation n°<%= Gossip.all.index(gossip) %></h1>
+        <p>
+          Son auteur : <%= gossip.author %><br/>
+          Le contenu de la citation : "<%= gossip.content %>"
         </p>
-    <% end %>
-    <a href="<%= id%>/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Editer le potin</a>
-    <!--<a href="<%= id%>/edit">Editer le potin</a>-->
-    <a href="/">Lien pour revenir à la page des potins</a>
+    <p>Pour revenir à la page des citations : <a href="/">clique ici</a></p>
   </body>
 </html>
