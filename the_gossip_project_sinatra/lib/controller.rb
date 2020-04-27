@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     erb :index, locals: {gossips: Gossip.all}
   end
 
-  get '/gossip/:name' do
+  get '/gossip/:name/' do
     erb :index_gossip, locals: {gossip: Gossip.find(params[:name].to_i)}
   end
 
@@ -20,7 +20,7 @@ class ApplicationController < Sinatra::Base
     redirect '/'
   end
 
-get '/gossips/:id' do
+get '/gossips/:id/' do
 		erb :gossip, locals: {gossip: Gossip.all[params[:id].to_i], id: params[:id].to_i, comments:Comment.all_with_id(params[:id].to_i)}
 	end
 
