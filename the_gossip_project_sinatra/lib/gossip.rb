@@ -1,31 +1,39 @@
-#Cette classe représente un gossip, elle est définie par son auteur, son contenu et sa place dans le fichier csv
 class Gossip
-	attr_accessor :author, :content
-	def initialize (author, content)
-		@author = author
-		@content = content
-	end
-	#sauvegarde l'instance dans le fichier csv
-	def save
-	  CSV.open("./db/gossip.csv", "ab") do |csv|
-	    csv << [@author, @content]
-	  end
+
+  attr_accessor :author, :content
+
+  def initialize(author, content)
+    @author = author
+    @content = content
+  end
+
+  def save
+    File.open("./db/gossip.csv", "ab") do |op| 
+      op.write("#{@author},#{@content}\n")
+      puts "#{@author} dit : #{@content}"
+    end
   end
 
   def self.all
-  	gossip_array = [] #on initialise un array vide
-	 	CSV.read("./db/gossip.csv").each do |line|
-		 	gossip_array << Gossip.new(line[0],line[1])
-		end
-
- 		return gossip_array
+    all_gossips = []
+    CSV.foreach("./db/gossip.csv") do |row|
+      gossip_temp = Gossip.new(row[0], row[1])
+      all_gossips << gossip_temp
+      end
+    return all_gossips
   end
-  
 
+  def self.find(id)
+    return self.all[id.to_i]
+  end
 
-def self.find(id)
-	return Gossip.all[id]
-end
-  
-  
+  def self.update(author, content, id)
+
+    row_array = CSV.read('db/gossip.csv')
+    row_array.each.with_index do |row, index| 
+      if (id.to_i + 1 ) == index
+        row_array[index] = [author, content]
+      end
+    end
+  end
 end
