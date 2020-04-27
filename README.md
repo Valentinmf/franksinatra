@@ -1,6 +1,14 @@
-COURS : SINATRA 
+Projet THP : the gossip project with Frankie
 
-Valentin 
+Projet de Valentin Figueiredo
+
+C'est un gestionnaire de potins avec Frankie Goes To Hollywood.
+
+L'app met en oeuvre le framework sinatra.
+
+$ bundle install
+et enfin 
+$ shotgun -p 4567
 
 Dans cette ressource, nous allons te montrer comment travailler avec Sinatra, un framework Ruby conçu pour coder des applications web. C'est un framework plus bas-niveau que Ruby on Rails (= une ligne de Rails = 3 lignes en Sinatra) et c'est parfait au début pour comprendre les rouages d'une application web. Par contre on ne l'utilisera pas longtemps car Sinatra te fait réinventer la roue.
 
